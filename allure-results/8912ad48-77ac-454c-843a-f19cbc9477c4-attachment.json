@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//xpath[normalize-space() = \"//div[2]/button/span/span\"]\"}\n  (Session info: chrome=113.0.5672.64)",
+  "stacktrace": "Backtrace:\n\tGetHandleVerifier [0x00358893+48451]\n\t(No symbol) [0x002EB8A1]\n\t(No symbol) [0x001F5058]\n\t(No symbol) [0x00220467]\n\t(No symbol) [0x0022069B]\n\t(No symbol) [0x0024DD92]\n\t(No symbol) [0x0023A304]\n\t(No symbol) [0x0024C482]\n\t(No symbol) [0x0023A0B6]\n\t(No symbol) [0x00217E08]\n\t(No symbol) [0x00218F2D]\n\tGetHandleVerifier [0x005B8E3A+2540266]\n\tGetHandleVerifier [0x005F8959+2801161]\n\tGetHandleVerifier [0x005F295C+2776588]\n\tGetHandleVerifier [0x003E2280+612144]\n\t(No symbol) [0x002F4F6C]\n\t(No symbol) [0x002F11D8]\n\t(No symbol) [0x002F12BB]\n\t(No symbol) [0x002E4857]\n\tBaseThreadInitThunk [0x75E67D49+25]\n\tRtlInitializeExceptionChain [0x77A1B74B+107]\n\tRtlClearBits [0x77A1B6CF+191]\n"
+}

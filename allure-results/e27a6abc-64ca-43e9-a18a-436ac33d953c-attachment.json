@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//xpath[normalize-space() = \"//div[2]/button/span/span\"]"
+}

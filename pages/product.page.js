@@ -1,46 +1,52 @@
 import BasePage from '../pages/base.page';
 
-
 class ProductPage extends BasePage {
-     //WebElements
-   get selectC(){ return $("//select[@id='attribute92']") }
-   get selectColor(){ return $("//option[text()='Indigo']") }
-   get selectSize(){ return $("//option[text()='32']") }
-   get addCart(){ return $("xpath=//div[2]/button/span/span") }
+  // WebElements
+  get colorDropdown() {
+    return browser.$('#attribute92');
+  }
+  get sizeDropdown() {
+    return browser.$('#attribute180');
+  }
 
-   /**
-     * Click en el elemento select
-    * */
-   async selectC() {
-    addStep(`clic en el select: ${this.selectC}`)
-    await super.clickearElemento(this.selectC);
+  get selectColorOption() {
+    return (color) => $(`//option[text()='${color}']`);
+  }
+  get selectSizeOption() {
+    return (size) => $(`//option[text()='${size}']`);
+  }
+  get addToCartButton() {
+    return $("//div[2]/button/span/span");
+  }
+
+  /**
+   * Seleccionar una opción en el dropdown de color
+   * @param {String} color
+   */
+  async selectColor(color) {
+    await this.colorDropdown.selectByVisibleText(color);
+    await this.selectColorOption(color).waitForDisplayed();
+    await addStep(`Seleccionar color: ${color}`);
+  }
+
+  /**
+   * Seleccionar una opción en el dropdown de tamaño
+   * @param {String} selectedSize
+   */
+  async selectSize(selectedSize) {
+    await this.sizeDropdown.selectByVisibleText(selectedSize);
+    await this.selectSizeOption(selectedSize).waitForDisplayed();
+    await addStep(`Seleccionar size: ${selectedSize}`);
+  }
+
+  /**
+   * Hacer clic en el botón "Agregar al carrito"
+   */
+  async addToCart() {
+    await super.clickearElemento(this.addToCartButton);
+    await addStep('Hacer clic en el botón "Agregar al carrito"');
+    await browser.pause(2000);
+  }
 }
 
-   /**
-     * Click en el elemento seleccionar color
-    * */
-    async selecionarColor() {
-        
-        await super.clickearElemento(this.selectColor);
-        /*const selectBox = await $(this.selectC);    
-        await selectBox.selectByVisibleText('Indigo');*/
-    
-    }
-    /**
-     * Click en el elemento seleccionar size
-    * */
-    async selecionarSize() {
-        addStep(`Seleccionar size: ${selecionarSize}`)
-        await super.clickearElemento(this.selectSize);
-    }
-
-     /**
-     * Click en el elemento agregar al carro
-    * */
-     async addCart() {
-        addStep(`Agragar al carro: ${this.addCart}`)
-        await super.clickearElemento(this.addCart);
-    }
-
-}
 export default new ProductPage();
