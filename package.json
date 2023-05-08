@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio ./wdio.conf.js",
+    "wdio": "npx wdio wdio.conf.js",
     "testing": "set AMBIENTE=testing&&npm run test",
     "prod": "set AMBIENTE=prod&&npm run test"
   },

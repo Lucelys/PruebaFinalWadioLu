@@ -1,13 +1,4 @@
 var path = require('path');
-const ambientes = require('./datos/ambientes.js')
-//obtener el ambiente seleccionado
-let AMBIENTE = process.env.AMBIENTE
-
-if (!AMBIENTE || !['testing', 'prod'].includes(AMBIENTE)) {
-   //si no se selecciona ningún ambiente se utiliza el ambiente de testing por defecto
-   console.log('Ejecutando testing por default')
-   AMBIENTE = 'testing'
-}
 exports.config = {
     //
     // ====================
@@ -31,7 +22,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './tests/specs/**/*.js'
+        './tests/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -110,7 +101,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: ambientes[AMBIENTE],
+    baseUrl: 'http://magento-demo.lexiconn.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -247,8 +238,15 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        const chai = require('chai');
+        const chaiWebdriver = require('chai-webdriverio').default;
+        const { addStep } = require('@wdio/allure-reporter').default;
+        chai.use(chaiWebdriver(browser));
+        global.assert = chai.assert;
+        global.expect = chai.expect;
+        global.addStep = addStep;
+     },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
