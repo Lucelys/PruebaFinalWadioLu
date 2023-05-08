@@ -19,7 +19,7 @@ describe('Agregar producto al carro', () => {
     await HomePage.buscar(productoABuscar);
     expect(await BusquedaPage.obtenerNombreResultado()).to.equal(resultadoEsperado);
 
-    // Ir a la página del producto y agregarlo al carro
+    // Ir a la página del producto seleccionar color, size y agregarlo al carro
     await BusquedaPage.ingresarAlResultado();
     await ProductPage.selectColor('Indigo');
     await ProductPage.selectSize('32');

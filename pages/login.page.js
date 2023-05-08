@@ -5,12 +5,8 @@ class LoginPage extends BasePage{
     get emailInput() { return $('input[type="email"]') }
     get passwordInput() { return $('input[type="password"]') }
     get loginButton() { return $('//span[text()="Login"]') }
-    get usuarioConectado(){ return $('.welcome-msg') }
-
-  
-    async obtenerUsuarioConectado() {
-        return await this.usuarioConectado.getText();
-    }
+    
+    
     /**
     * Login
     * @param {String} email 
