@@ -24,9 +24,11 @@ class ProductPage extends BasePage {
    * @param {String} color
    */
   async selectColor(color) {
+
+    await addStep(`Seleccionar color: ${color}`);
     await this.colorDropdown.selectByVisibleText(color);
     await this.selectColorOption(color).waitForDisplayed();
-    await addStep(`Seleccionar color: ${color}`);
+    
   }
 
   /**
@@ -34,17 +36,20 @@ class ProductPage extends BasePage {
    * @param {String} selectedSize
    */
   async selectSize(selectedSize) {
+
+    await addStep(`Seleccionar size: ${selectedSize}`);
     await this.sizeDropdown.selectByVisibleText(selectedSize);
     await this.selectSizeOption(selectedSize).waitForDisplayed();
-    await addStep(`Seleccionar size: ${selectedSize}`);
+    
   }
 
   /**
    * Hacer clic en el botón "Agregar al carrito"
    */
   async addToCart() {
+
+    await addStep('Hacer clic en el botón "Agregar al carro"');
     await super.clickearElemento(this.addToCartButton);
-    await addStep('Hacer clic en el botón "Agregar al carrito"');
     await browser.pause(2000);
   }
 }

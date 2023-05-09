@@ -11,8 +11,8 @@ class CartPage extends BasePage {
  * Hacer clic en el botón "Remove item"
  */
 async removeItem() {
-    await super.clickearElemento(this.deleteProduct);
     await addStep('Hacer clic en el botón "Remove Item"');
+    await super.clickearElemento(this.deleteProduct);
     console.log('Se hizo clic en el botón "Remove Item"');
     await browser.pause(2000);
   }

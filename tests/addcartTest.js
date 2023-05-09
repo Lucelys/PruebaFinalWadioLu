@@ -11,7 +11,7 @@ describe('Agregar producto al carro', () => {
 
     // Iniciar sesión
     await LoginPage.login("nadiamartinez@gmail.com","Na12345*");
-    expect(await LoginPage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
+    expect(await HomePage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
 
     // Buscar producto
     const productoABuscar = 'Jean';
