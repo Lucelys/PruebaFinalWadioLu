@@ -4,6 +4,11 @@ import LoginPage from '../pages/login.page';
 import ProductPage from '../pages/product.page';
 import CartPage from '../pages/cart.page';
 
+const nombreUsuario = "WELCOME, ANGEL MARTINEZ!";
+const productoABuscar = 'Jean';
+const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
+
+
 describe('Eliminar producto del carro', () => {
   it('Eliminar producto', async () => {
     // Abrir página principal
@@ -14,13 +19,11 @@ describe('Eliminar producto del carro', () => {
     await HomePage.hacerClicEnLogIn();
 
     // Iniciar sesión
-    const nombreUsuario = "WELCOME, ANGEL MARTINEZ!";
+   
     await LoginPage.login("angelmartinez@gmail.com","Aa12345*");
     expect(await HomePage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
 
     // Buscar producto
-    const productoABuscar = 'Jean';
-    const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
     await HomePage.buscar(productoABuscar);
     expect(await BusquedaPage.obtenerNombreResultado()).to.equal(resultadoEsperado);
 

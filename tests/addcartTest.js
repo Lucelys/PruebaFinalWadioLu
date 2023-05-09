@@ -3,6 +3,10 @@ import BusquedaPage from '../pages/busqueda.page';
 import LoginPage from '../pages/login.page';
 import ProductPage from '../pages/product.page';
 
+const nombreUsuario = "WELCOME, NADIA MARTINEZ!";
+const productoABuscar = 'Jean';
+const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
+
 describe('Agregar producto al carro', () => {
   it('Agregar producto al carro', async () => {
     // Abrir página principal
@@ -12,15 +16,14 @@ describe('Agregar producto al carro', () => {
     // Hacer clic en el botón de Log In
     await HomePage.hacerClicEnLogIn();
 
-    const nombreUsuario = "WELCOME, NADIA MARTINEZ!";
+    
 
     // Iniciar sesión
     await LoginPage.login("nadiamartinez@gmail.com","Na12345*");
     expect(await HomePage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
 
     // Buscar producto
-    const productoABuscar = 'Jean';
-    const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
+    
     await HomePage.buscar(productoABuscar);
     expect(await BusquedaPage.obtenerNombreResultado()).to.equal(resultadoEsperado);
 

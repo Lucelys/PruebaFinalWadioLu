@@ -2,7 +2,8 @@ import HomePage from '../pages/home.page';
 import BusquedaPage from '../pages/busqueda.page';
 import ProductPage from '../pages/product.page';
 
-
+const productoABuscar = 'Jean';
+const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
 
 
 describe('Buscando Producto por nombre', () => {
@@ -10,8 +11,6 @@ describe('Buscando Producto por nombre', () => {
         await HomePage.abrir('/');
 
          // Buscar producto
-        const productoABuscar = 'Jean';
-        const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
         await HomePage.buscar(productoABuscar);
         expect(await BusquedaPage.obtenerNombreResultado()).to.equal(resultadoEsperado);
 

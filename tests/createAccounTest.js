@@ -2,6 +2,8 @@ import HomePage from "../pages/home.page";
 import LoginPage from "../pages/login.page";
 import CrearCuentaPage from "../pages/crearCuenta.page";
 
+const mensaje = await CrearCuentaPage.obtenerMensajeExito();
+
 describe('Creación de una Nueva Cuenta', () => {
     it('debería crear una cuenta exitosamente', async () => {
          // Abrir página principal
@@ -17,7 +19,6 @@ describe('Creación de una Nueva Cuenta', () => {
         
          await CrearCuentaPage.llenarFormulario('Luis', 'Gonzales', 'luisgonzales@gmail.com', 'luis1234');
          await CrearCuentaPage.enviarFormulario();
-         const mensaje = await CrearCuentaPage.obtenerMensajeExito();
          assert.strictEqual(mensaje, 'Thank you for registering with Madison Island.');
     });
 });
