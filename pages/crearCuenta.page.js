@@ -22,18 +22,21 @@ class CrearCuentaPage extends BasePage{
     */
 
     async llenarFormulario(nombre, apellido, email, contraseña) {
-       await this.firstNameInput.setValue(nombre);
-       await this.lastNameInput.setValue(apellido);
-       await this.emailInput.setValue(email);
-       await this.passwordInput.setValue(contraseña);
-       await this.confirmPasswordInput.setValue(contraseña);
+        addStep(`Crear cuenta con:${nombre} ${apellido} ${email} ${contraseña}`)
+        await this.firstNameInput.setValue(nombre);
+        await this.lastNameInput.setValue(apellido);
+        await this.emailInput.setValue(email);
+        await this.passwordInput.setValue(contraseña);
+        await this.confirmPasswordInput.setValue(contraseña);
     }
 
     async enviarFormulario() {
+        addStep('Enviar formulario')
         await this.submitButton.click();
     }
 
     async obtenerMensajeExito() {
+        addStep('Obtener mensaje')
         return await this.successMessage.getText();
     }
 }

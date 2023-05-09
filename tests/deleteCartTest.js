@@ -6,13 +6,17 @@ import CartPage from '../pages/cart.page';
 
 describe('Eliminar producto del carro', () => {
   it('Eliminar producto', async () => {
-    // Abrir página de inicio de sesión
-    await HomePage.abrir('/customer/account/login/');
-    const nombreUsuario = "WELCOME, NADIA MARTINEZ!";
+    // Abrir página principal
+    await HomePage.abrir('/');
+    // Hacer clic en el botón de Account
+    await HomePage.hacerClicEnAccount();
+    // Hacer clic en el botón de Log In
+    await HomePage.hacerClicEnLogIn();
 
     // Iniciar sesión
-    await LoginPage.login("nadiamartinez@gmail.com","Na12345*");
-    expect(await LoginPage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
+    const nombreUsuario = "WELCOME, ANGEL MARTINEZ!";
+    await LoginPage.login("angelmartinez@gmail.com","Aa12345*");
+    expect(await HomePage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
 
     // Buscar producto
     const productoABuscar = 'Jean';

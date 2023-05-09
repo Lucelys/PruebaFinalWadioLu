@@ -5,8 +5,13 @@ import ProductPage from '../pages/product.page';
 
 describe('Agregar producto al carro', () => {
   it('Agregar producto al carro', async () => {
-    // Abrir página de inicio de sesión
-    await HomePage.abrir('/customer/account/login/');
+    // Abrir página principal
+    await HomePage.abrir('/');
+    // Hacer clic en el botón de Account
+    await HomePage.hacerClicEnAccount();
+    // Hacer clic en el botón de Log In
+    await HomePage.hacerClicEnLogIn();
+
     const nombreUsuario = "WELCOME, NADIA MARTINEZ!";
 
     // Iniciar sesión

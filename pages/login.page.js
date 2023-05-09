@@ -1,4 +1,5 @@
 import BasePage from "./base.page"
+import HomePage from "./home.page"
 
 class LoginPage extends BasePage{
     
@@ -6,7 +7,7 @@ class LoginPage extends BasePage{
     get passwordInput() { return $('#pass')}
     get loginButton() { return $('//span[text()="Login"]') }
     get btnCrearCuenta() { return $("//a[@title='Create an Account']")}
-
+    
 
     /**
     * Ir a crear cuenta
@@ -30,6 +31,13 @@ class LoginPage extends BasePage{
         await browser.pause(5000);
         await this.loginButton.click()
     }
+    async logOut() {
+        addStep('Cerrar sesion')
+        await HomePage.hacerClicEnAccount();
+        await HomePage.cerrarSesion();
+        
+    }
+
 }
   
 export default new LoginPage();
