@@ -8,7 +8,6 @@ class HomePage extends BasePage {
    get usuarioConectado(){ return $('.welcome-msg') }
 
 
-
    //-------------------------------------------------------------------------------------------------------//
 
    async obtenerUsuarioConectado() {
@@ -33,15 +32,7 @@ class HomePage extends BasePage {
     return await this.barraDeBusqueda.getValue();
    }
 
-   /**
-    * Hacer clic en los elementos del menú
-    */
-   async clickearElementoDeMenu(menu) {
-    const linkMenu = $(`a[href="http://magento-demo.lexiconn.com/${menu}.html"]`);
-    await super.clickearElemento(linkMenu);
-    await addStep(`Hacer clic en el menú ${menu}`);
-    await browser.pause(2000);
-}
+
 
 }
 

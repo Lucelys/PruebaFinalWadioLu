@@ -2,11 +2,22 @@ import BasePage from "./base.page"
 
 class LoginPage extends BasePage{
     
-    get emailInput() { return $('input[type="email"]') }
-    get passwordInput() { return $('input[type="password"]') }
+    get emailInput() { return $('#email') }
+    get passwordInput() { return $('#pass')}
     get loginButton() { return $('//span[text()="Login"]') }
-    
-    
+    get btnCrearCuenta() { return $("//a[@title='Create an Account']")}
+
+
+    /**
+    * Ir a crear cuenta
+    */
+
+    async irAcrearCuenta() {
+        addStep(`Cliquear sobre Crear cuenta`)
+        await super.clickearElemento(this.btnCrearCuenta);
+    }
+     
+
     /**
     * Login
     * @param {String} email 
@@ -19,6 +30,6 @@ class LoginPage extends BasePage{
         await browser.pause(5000);
         await this.loginButton.click()
     }
-  }
+}
   
-  export default new LoginPage();
+export default new LoginPage();
