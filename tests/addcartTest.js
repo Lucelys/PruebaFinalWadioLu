@@ -6,31 +6,41 @@ import ProductPage from '../pages/product.page';
 const nombreUsuario = "WELCOME, NADIA MARTINEZ!";
 const productoABuscar = 'Jean';
 const resultadoEsperado = 'THE ESSENTIAL BOOT CUT JEAN';
+const color = 'Indigo';
+const tamaño = '32';
+const usuario = 'nadiamartinez@gmail.com';
+const contraseña = 'Na12345*';
 
 describe('Agregar producto al carro', () => {
   it('Agregar producto al carro', async () => {
-    // Abrir página principal
+  
+    addStep('Abrir la pagina principal');
     await HomePage.abrir('/');
-    // Hacer clic en el botón de Account
+
+    addStep('Clic en el boton ACCOUNT');
     await HomePage.hacerClicEnAccount();
-    // Hacer clic en el botón de Log In
+
+    addStep('Clic en el boton Log In');
     await HomePage.hacerClicEnLogIn();
 
     
 
-    // Iniciar sesión
-    await LoginPage.login("nadiamartinez@gmail.com","Na12345*");
+    addStep('Inicio de sesion');
+    await LoginPage.login(usuario, contraseña);
     expect(await HomePage.obtenerUsuarioConectado()).to.equal(nombreUsuario);
 
-    // Buscar producto
-    
+    addStep('Buscar producto');
     await HomePage.buscar(productoABuscar);
     expect(await BusquedaPage.obtenerNombreResultado()).to.equal(resultadoEsperado);
 
-    // Ir a la página del producto seleccionar color, size y agregarlo al carro
+    
+    addStep('Clic en el producto');
     await BusquedaPage.ingresarAlResultado();
-    await ProductPage.selectColor('Indigo');
-    await ProductPage.selectSize('32');
+    addStep('Selecionar color');
+    await ProductPage.selectColor(color);
+    addStep('Seleccionar tamaño');
+    await ProductPage.selectSize(tamaño);
+    addStep('Agregar producto al carro');
     await ProductPage.addToCart();
   });
 });

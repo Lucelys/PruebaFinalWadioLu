@@ -9,16 +9,19 @@ describe('Buscando Producto por nombre', () => {
     it('Debería buscar un producto seleccionar color y size', async () => {
         await HomePage.abrir('/');
 
-         // Buscar producto
+        addStep('Buscar producto')
         await HomePage.buscar(productoABuscar);
         expect(await BusquedaPage.obtenerNombreResultado()).to.equal(resultadoEsperado);
 
-        // Ir a la página del producto seleccionar color y size
+        addStep('Clic en el producto');
         await BusquedaPage.ingresarAlResultado();
-        await ProductPage.selectColor('Indigo');
-        await ProductPage.selectSize('32');
+        addStep('Selecionar color');
+        await ProductPage.selectColor(color);
+        addStep('Seleccionar tamaño');
+        await ProductPage.selectSize(tamaño);
       
-        // Tomar una captura de pantalla de los elementos deseados y comparar con las capturas de pantalla de referencia
+        
+        addStep('Tomar una captura de pantalla de los elementos deseados y comparar con las capturas de pantalla de referencia');
 
         await $("//li[1]//a[1]//img[1]").waitForDisplayed();
         expect(
@@ -28,7 +31,6 @@ describe('Buscando Producto por nombre', () => {
             "Error: La imagen de producto no coincide con la original"
         ).equal(0);
     });
-});
-
+});    
   
 
