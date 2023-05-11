@@ -4,7 +4,7 @@ class BusquedaPage extends BasePage {
 
    //Elementos Web
    
-   get resultado(){ return $("//a[text()='The Essential Boot Cut Jean']") }
+   get resultado(){ return $("//a[@title='The Essential Boot Cut Jean'][normalize-space()='The Essential Boot Cut Jean']") }
 
    //-------------------------------------------------------------------------------------------------------//
  
